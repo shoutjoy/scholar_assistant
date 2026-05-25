@@ -1,0 +1,25 @@
+---
+id: default-slide-step2
+source: env
+schemaVersion: 1
+targets:
+  - app: assistant
+    key: slideTools.step2
+title: STEP 02 재귀적 상세 추출
+parameters:
+  - name: from
+    label: 시작 슬라이드 번호
+    default: 1
+  - name: to
+    label: 끝 슬라이드 번호
+    default: 15
+mirrorCustomize: customize/slide_tools/step02_recursive_extract.md
+---
+
+- 대상: 슬라이드 {{from}}~{{to}}번 주제.
+- 지시 사항:
+  1. 해당 구간의 내용을 설명할 때, 본문에 등장하는 모든  고유 명사(학자 이름, 모델명) 와  통계 수치(백분율, 시간 등) 를 하나도 빠짐없이 포함하라. 
+  2. (매우 중요) "더 이상 설명할 것이 없다"고 판단될 때까지 본문의 예시와 설명을 최대한 길게 서술하라. 
+  3. 각 슬라이드에 들어갈 시각적 요소(그래프의 x-y축 내용, 도표의 항목)를 본문의 텍스트를 근거로 복원하여 설명하라. 
+- 출력 원칙: 각 문장 뒤에 해당 정보가 있는 소스 번호를 반드시 기재하라. 
+Strict Citation Rule: Source to Footnote: 1. 매핑 규칙: 원문의 'Source N'을 발견하면 등장 순서대로 [^1], [^2]... 로 치환하여 본문에 표기할 것. 2. 주석 생성: 답변 최하단에 주석형식을 [^1]:내용 (빈줄)[^2]:내용 (빈줄) [^3]:내용...의 형식으로 하여 [^n]: "원문 텍스트" (빈줄) [^n+1]:내용의 형식의 원문리스트를 반드시 포함할 것(각 번호 사이에는 반드시 빈 줄을 삽입할 것). 3. 학술적 태깅: 'Source: Source N' 텍스트는 스타일은 지양하고, 해당 개념 바로 뒤에 [^n]를 붙여 출처를 명확히 할 것(n=1,2,3...).
